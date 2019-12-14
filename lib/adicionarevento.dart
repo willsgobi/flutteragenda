@@ -63,8 +63,10 @@ class _AdicionarEventoState extends State<AdicionarEvento> {
                   color: Theme.of(context).primaryColor,
                   child: Text("Salvar"),
                   onPressed: () {
-                    saveEvent();
-                    Navigator.of(context).pop();
+                    if(_formKey.currentState.validate()){
+                      saveEvent();
+                      Navigator.of(context).pop();
+                    }
                   },
                 ),
               )

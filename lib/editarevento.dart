@@ -92,13 +92,15 @@ class _EditarEventoState extends State<EditarEvento> {
                   color: Theme.of(context).primaryColor,
                   child: Text("Atualizar"),
                   onPressed: () {
-                    Firestore.instance.collection("events").document(idEvento).setData({
-                      "nome": _nomeController.text,
-                      "hora": _horaController.text,
-                      "data": _dataController.text,
-                      "idEvent": eventInsert
-                    });
-                    Navigator.of(context).pop();
+                    if(_keyForm.currentState.validate()){
+                      Firestore.instance.collection("events").document(idEvento).setData({
+                        "nome": _nomeController.text,
+                        "hora": _horaController.text,
+                        "data": _dataController.text,
+                        "idEvent": eventInsert
+                      });
+                      Navigator.of(context).pop();
+                    }
                   },
                 ),
               )
